@@ -4,7 +4,7 @@ import java.time.LocalTime;
 public class TicketController {
 
 
-    public static final int secondsInMinute = 60;
+    public static final int SECONDS_IN_MINUTE = 60;
 
     public static Passenger[] validate(Passenger[] passengers){
         Passenger[] withoutTicket = new Passenger[passengers.length];
@@ -12,7 +12,7 @@ public class TicketController {
         for (int i=0; i<passengers.length; i++){
             if(passengers[i].getTicket() != null){
                 Duration duration = Duration.between(passengers[i].getTicket().getBuyTime(), LocalTime.now());
-                if(duration.getSeconds() > passengers[i].getTicket().getValidityTime()* secondsInMinute){
+                if(duration.getSeconds() > passengers[i].getTicket().getValidityTime()* SECONDS_IN_MINUTE){
                   withoutTicket[j] = passengers[i];
                   j++;
                 }
